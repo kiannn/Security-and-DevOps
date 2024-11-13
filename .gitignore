@@ -11,7 +11,7 @@ target/
 .gradle/
 build/
 
-# Eclipse / IntelliJ IDEA / NetBeans project files
+# NetBeans project files
 .classpath
 .project
 .settings/
