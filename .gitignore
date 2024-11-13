@@ -1,26 +1,29 @@
-.idea/
-/starter_code/target/
-### STS ###
-.apt_generated
-.classpath
-.factorypath
-.project
-.settings
-.springBeans
-.sts4-cache
-### IntelliJ IDEA ###
-.idea
-*.iws
-*.iml
-*.ipr
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
+# Compiled class files
+*.class
+
+# Maven and Gradle directories
+target/
+.build/
+*.war
+*.ear
+
+# Gradle-specific files
+.gradle/
 build/
-!**/src/main/**/build/
-!**/src/test/**/build/
-### VS Code ###
-.vscode/
+
+# Eclipse / IntelliJ IDEA / NetBeans project files
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+nbproject/private/
+
+# Logs
+*.log
+
+# Temporary files
+*.tmp
+*.bak
+*.swp
+*~
