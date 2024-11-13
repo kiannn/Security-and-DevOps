@@ -1,14 +1,31 @@
-.idea/
-/starter_code/target/
-### STS ###
-.apt_generated
+# Compiled class files
+*.class
+
+# Maven build directory
+target/
+
+# Ignore jar/war/ear files
+*.jar
+*.war
+*.ear
+
+# IDE files (e.g., Eclipse, IntelliJ, NetBeans)
 .classpath
-.factorypath
 .project
-.settings
-.springBeans
-.sts4-cache
-### IntelliJ IDEA ###
-*.iws
+.settings/
+.idea/
 *.iml
-*.ipr
+nbproject/private/
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+*~
+
+# Environment configuration
+.env
+
+# Code folder
+/starter_code/target/
