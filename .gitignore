@@ -9,6 +9,9 @@ target/
 *.war
 *.ear
 
+# Compiled class files
+*.class
+
 # IDE files
 .classpath
 .project
@@ -17,10 +20,14 @@ target/
 *.iml
 nbproject/private/
 
-# and temporary files
+# Ignore temporary files
 *.tmp
 *.bak
 *.swp
 *~
+
 # Environment configuration
 .env
+
+
+
