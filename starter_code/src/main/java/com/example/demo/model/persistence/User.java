@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "user")
 public class User {
-// some change
+// some change....
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonProperty
