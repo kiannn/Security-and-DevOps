@@ -1,5 +1,5 @@
-# Compiled class files
-*.class
+# Code folder
+/starter_code/target/
 
 # Maven build directory
 target/
@@ -9,7 +9,7 @@ target/
 *.war
 *.ear
 
-# IDE files (e.g., Eclipse, IntelliJ, NetBeans)
+# IDE files
 .classpath
 .project
 .settings/
@@ -17,15 +17,10 @@ target/
 *.iml
 nbproject/private/
 
-# Logs and temporary files
-*.log
+# and temporary files
 *.tmp
 *.bak
 *.swp
 *~
-
 # Environment configuration
 .env
-
-# Code folder
-/starter_code/target/
