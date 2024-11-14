@@ -9,7 +9,6 @@ import javax.persistence.*;
 @Table(name = "user")
 public class User {
 
-// some change....
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
