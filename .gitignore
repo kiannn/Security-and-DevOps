@@ -1,2 +1,33 @@
-.idea/
+# Code folder
 /starter_code/target/
+
+# Maven build directory
+target/
+
+# Ignore jar/war/ear files
+*.jar
+*.war
+*.ear
+
+# Compiled class files
+*.class
+
+# IDE files
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+nbproject/private/
+
+# Ignore temporary files
+*.tmp
+*.bak
+*.swp
+*~
+
+# Environment configuration
+.env
+
+
+
