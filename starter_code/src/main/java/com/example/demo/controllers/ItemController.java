@@ -11,10 +11,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.model.persistence.Item;
 import com.example.demo.model.persistence.repositories.ItemRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RestController
 @RequestMapping("/api/item")
 public class ItemController {
+
+        private final Logger log = LoggerFactory.getLogger(getClass());
 
 	@Autowired
 	private ItemRepository itemRepository;
@@ -29,12 +33,17 @@ public class ItemController {
 		return ResponseEntity.of(itemRepository.findById(id));
 	}
 	
-	@GetMapping("/name/{name}")
-	public ResponseEntity<List<Item>> getItemsByName(@PathVariable String name) {
-		List<Item> items = itemRepository.findByName(name);
-		return items == null || items.isEmpty() ? ResponseEntity.notFound().build()
-				: ResponseEntity.ok(items);
-			
-	}
+    @GetMapping("/name/{name}")
+    public ResponseEntity<List<Item>> getItemsByName(@PathVariable String name) {
+        
+        List<Item> items = itemRepository.findByName(name);
+
+        if (items == null || items.isEmpty()) {
+            log.error("item not found for item: {}",name); 
+            return ResponseEntity.notFound().build();
+        }
+       return ResponseEntity.ok(items);
+
+    }
 	
 }
