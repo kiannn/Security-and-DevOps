@@ -53,28 +53,51 @@ public class UserController {
 
     @PostMapping("/create")
     public ResponseEntity<User> createUser(@RequestBody CreateUserRequest createUserRequest) {
+
+        String username = createUserRequest.getUsername();
+        String password = createUserRequest.getPassword();
+        String confirmPassword = createUserRequest.getConfirmPassword();
+
+        if (username == null || password == null || confirmPassword == null) {
+
+            log.error("Username, password and confirmPassword all must be provided - Username={} "
+                    + "password={} confirmPassword={}", username, password, confirmPassword);
+            
+            return ResponseEntity.badRequest().build();
+        }
         
         Cart cart = new Cart();
-//        cartRepository.save(cart);
+        cartRepository.save(cart);
         User user = new User();
         user.setUsername(createUserRequest.getUsername());
         user.setCart(cart);
-         
+
         if (createUserRequest.getPassword().length() < 7
                 || !createUserRequest.getPassword().equals(createUserRequest.getConfirmPassword())) {
-            
-            log.warn("User create failed, either password length is less than 7"+ 
-                      " or mismatched confirm password - password:{}  confirm password: {}",
-                     createUserRequest.getPassword(),createUserRequest.getConfirmPassword());
-            
+
+            log.warn("User create failed, either password length is less than 7"
+                    + " or mismatched confirm password - password:{}  confirm password: {}",
+                    createUserRequest.getPassword(), createUserRequest.getConfirmPassword());
+
+            return ResponseEntity.badRequest().build();
+        }
+
+        User findByUsername = userRepository.findByUsername(createUserRequest.getUsername().trim());
+
+        /**
+         * Check if username is unique
+         */
+        if (findByUsername != null) {
+
+            log.error("Username must be unique - username {} already exists", createUserRequest.getUsername());
             return ResponseEntity.badRequest().build();
         }
 
         user.setPassword(bCryptPasswordEncoder.encode(createUserRequest.getPassword()));
         userRepository.save(user);
 
-        log.info("User created successfully username: {}   id: {}", user.getUsername(),user.getId());
-        
+        log.info("User created successfully username: {}   id: {}", user.getUsername(), user.getId());
+
         return ResponseEntity.ok(user);
     }
 

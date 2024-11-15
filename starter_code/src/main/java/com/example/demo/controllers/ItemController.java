@@ -30,6 +30,11 @@ public class ItemController {
 	
 	@GetMapping("/{id}")
 	public ResponseEntity<Item> getItemById(@PathVariable Long id) {
+            /**
+             * ResponseEntity.of
+             * A shortcut for creating a ResponseEntity with the given body and the OK status, 
+             * or an empty body and a NOT FOUND status in case of a Optional.empty() parameter.
+             */
 		return ResponseEntity.of(itemRepository.findById(id));
 	}
 	

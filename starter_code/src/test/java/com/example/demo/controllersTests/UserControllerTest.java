@@ -158,4 +158,32 @@ public class UserControllerTest {
         Assert.assertEquals(HttpStatus.BAD_REQUEST, response2.getStatusCode());
 
     }
+    
+    @Test
+    public void test_Invalid_UserName_Not_Unique() {
+        
+        /**
+         * Assume a user with username 'username' already exists in the database
+         * so userRepository.findByUsername("username") returns non-null value
+         */
+        String username = "username";
+        
+        CreateUserRequest request = new CreateUserRequest();
+        request.setUsername(username);
+        request.setPassword("password");
+        request.setConfirmPassword("password");
+        
+        User user = new User();
+        user.setId(1L);
+        user.setUsername(username);
+        user.setPassword("password");
+
+        Mockito.when(userRepository.findByUsername(username)).thenReturn(user);
+        ResponseEntity<User> response = userController.createUser(request);
+
+        Assert.assertNull(response.getBody());
+        Assert.assertNotNull(response);
+        Assert.assertEquals(HttpStatus.BAD_REQUEST, response.getStatusCode());
+    }
 }
+

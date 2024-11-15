@@ -125,8 +125,25 @@ public class ItemControllerTest {
          * on the mocked itemRepository object hence it returns null at the time of
          * invocation
         */
-        final ResponseEntity<List<Item>> itemsByName = itemController.getItemsByName("nonExistentItem");
+        final ResponseEntity<List<Item>> itemsByName = itemController.getItemsByName("invalid item Name");
         final List<Item> body = itemsByName.getBody();
+
+        Assert.assertNotNull(itemsByName);
+        Assert.assertNull(body);
+        Assert.assertEquals(itemsByName.getStatusCode(), HttpStatus.NOT_FOUND);
+
+    }
+    
+    @Test
+    public void test_NotFound_Get_Items_By_ID() throws Exception {
+
+        /**
+         * The behavior of itemRepository.findById(id) method is not defined
+         * on the mocked itemRepository object hence it returns null at the time of
+         * invocation as if the item does not exist at all.
+        */
+        final ResponseEntity<Item> itemsByName = itemController.getItemById(3L);
+        final Item body = itemsByName.getBody();
 
         Assert.assertNotNull(itemsByName);
         Assert.assertNull(body);

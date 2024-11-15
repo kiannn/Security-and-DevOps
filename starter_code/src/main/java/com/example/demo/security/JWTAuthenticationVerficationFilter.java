@@ -15,11 +15,17 @@ import org.springframework.security.web.authentication.www.BasicAuthenticationFi
 import org.springframework.stereotype.Component;
 
 import com.auth0.jwt.JWT;
-import static com.auth0.jwt.algorithms.Algorithm.HMAC384;
-
+import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
+import com.auth0.jwt.exceptions.AlgorithmMismatchException;
+import com.auth0.jwt.exceptions.JWTDecodeException;
+import com.auth0.jwt.exceptions.SignatureVerificationException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @Component
 public class JWTAuthenticationVerficationFilter extends BasicAuthenticationFilter {
+
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
     public JWTAuthenticationVerficationFilter(AuthenticationManager authManager) {
         super(authManager);
@@ -43,22 +49,24 @@ public class JWTAuthenticationVerficationFilter extends BasicAuthenticationFilte
 
     private UsernamePasswordAuthenticationToken getAuthentication(HttpServletRequest req) {
         String token = req.getHeader(SecurityConstants.HEADER_STRING);
+
         if (token != null) {
-            String user = JWT.require(HMAC384(SecurityConstants.SECRET.getBytes())).build()
-                    .verify(token.replace(SecurityConstants.TOKEN_PREFIX, ""))
-                    .getSubject();
+
+            String user = null;
             
-//            String header = JWT.require(HMAC384(SecurityConstants.SECRET.getBytes())).build() 
-//                    .verify(token.replace(SecurityConstants.TOKEN_PREFIX, "")).getHeader();
-//            
-//            String pay = JWT.require(HMAC384(SecurityConstants.SECRET.getBytes())).build() 
-//                    .verify(token.replace(SecurityConstants.TOKEN_PREFIX, "")).getPayload();
-            
-              //system.out.println("HEADER: "+header);
-              //system.out.println("header "+new String(Base64.getUrlDecoder().decode(header)));
-            
-              //system.out.println("\nPAYL: "+pay);
-              //system.out.println("pay "+new String(Base64.getUrlDecoder().decode(pay)));
+            /**
+             * In case Signature Verification or Algorithm Match fails log to the consol with the
+             * corresponding message
+             */
+            try {
+
+                user = JWT.require(HMAC512(SecurityConstants.SECRET.getBytes())).build()
+                        .verify(token.replace(SecurityConstants.TOKEN_PREFIX, ""))
+                        .getSubject();
+            } catch (SignatureVerificationException | AlgorithmMismatchException | JWTDecodeException s) {
+                log.error(s.getMessage());
+            }
+
             if (user != null) {
                 return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
             }
