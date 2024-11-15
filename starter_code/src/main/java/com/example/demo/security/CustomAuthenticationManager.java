@@ -17,36 +17,35 @@ public class CustomAuthenticationManager implements AuthenticationManager {
 
     @Autowired
     UserRepository UserRepository;
-    
+
     @Autowired
     BCryptPasswordEncoder BCryptPasswordEncoder;
-    
+
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-    
+
         final User findByUsername = UserRepository.findByUsername(authentication.getName());
-        
-        if (findByUsername == null || authentication.getCredentials()==null) {
+
+        if (findByUsername == null || authentication.getCredentials() == null) {
 
             throw new BadCredentialsException("Failed to read credentials");
         }
 
         String password = authentication.getCredentials().toString();
         String username = authentication.getName();
-        
+
         boolean matches = BCryptPasswordEncoder.matches(password, findByUsername.getPassword());
 
         if (!matches) {
             throw new BadCredentialsException("Mismatch credentials");
         }
-        
-        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = 
-                            new UsernamePasswordAuthenticationToken(username, 
-                                                                   password,
-                                                                   new ArrayList<>());
-        
+
+        UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken
+                = new UsernamePasswordAuthenticationToken(username,
+                        password,
+                        new ArrayList<>());
+
         return usernamePasswordAuthenticationToken;
-        
 
     }
 

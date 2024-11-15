@@ -16,20 +16,25 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import com.auth0.jwt.JWT;
-import static com.auth0.jwt.algorithms.Algorithm.HMAC384;
+import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 import com.example.demo.model.persistence.User;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.util.Map;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.security.authentication.BadCredentialsException;
 
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
-	 private AuthenticationManager authenticationManager;
+    private final Logger log = LoggerFactory.getLogger(getClass());
+    
+    private AuthenticationManager authenticationManager;
 
     public JWTAuthenticationFilter(AuthenticationManager authenticationManager) {
         this.authenticationManager = authenticationManager;
     }
-    
+
     @Override
     public Authentication attemptAuthentication(HttpServletRequest req,
             HttpServletResponse res) throws AuthenticationException {
@@ -42,36 +47,35 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
                             credentials.getUsername(),
                             credentials.getPassword(),
                             new ArrayList<>()));
-            
+
             return authenticate;
-            
+
         } catch (IOException e) {
+
+            log.warn("Something went wrong : "+e.getMessage());
+            return null;
             
-            throw new RuntimeException(e);
+        } catch (BadCredentialsException bad) {
+
+            res.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            log.warn(bad.getMessage());
+            return null;
+
         }
     }
-    
+
     @Override
     protected void successfulAuthentication(HttpServletRequest req,
-                                            HttpServletResponse res,
-                                            FilterChain chain,
-                                            Authentication auth) throws IOException, ServletException {
+            HttpServletResponse res,
+            FilterChain chain,
+            Authentication auth) throws IOException, ServletException {
 
-          //system.out.println("\nsuccessfulAuthentication()");
         String token = JWT.create()
-                .withHeader(Map.of("typ","JWT","alg","HS384")) 
+                .withHeader(Map.of("typ", "JWT", "alg", "HS512"))
                 .withIssuedAt(new Date())
-                .withSubject( auth.getName())
+                .withSubject(auth.getName())
                 .withExpiresAt(new Date(System.currentTimeMillis() + SecurityConstants.EXPIRATION_TIME))
-                .sign(HMAC384(SecurityConstants.SECRET.getBytes()));
-        
-           //system.out.println("HEADER is -> "+new String(Base64.getUrlDecoder().decode(token.substring(0, token.indexOf('.')))));
-//         String header = JWT.require(HMAC384(SecurityConstants.SECRET.getBytes()))
-//                             .build()
-//                             .verify(token.replace(SecurityConstants.TOKEN_PREFIX, ""))
-//                             .getHeader();
-  
-          //system.out.println("HEADER is  -->"+new String(Base64.getUrlDecoder().decode(header)));
+                .sign(HMAC512(SecurityConstants.SECRET.getBytes()));
 
         res.addHeader(SecurityConstants.HEADER_STRING, SecurityConstants.TOKEN_PREFIX + token);
     }

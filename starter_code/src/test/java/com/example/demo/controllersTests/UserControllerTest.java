@@ -164,7 +164,7 @@ public class UserControllerTest {
         
         /**
          * Assume a user with username 'username' already exists in the database
-         * so userRepository.findByUsername("username") returns non-null value
+         * so userRepository.findByUsername("username") returns a non-null value
          */
         String username = "username";
         

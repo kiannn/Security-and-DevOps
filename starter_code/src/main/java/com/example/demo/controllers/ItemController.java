@@ -18,37 +18,37 @@ import org.slf4j.LoggerFactory;
 @RequestMapping("/api/item")
 public class ItemController {
 
-        private final Logger log = LoggerFactory.getLogger(getClass());
+    private final Logger log = LoggerFactory.getLogger(getClass());
 
-	@Autowired
-	private ItemRepository itemRepository;
-	
-	@GetMapping
-	public ResponseEntity<List<Item>> getItems() {
-		return ResponseEntity.ok(itemRepository.findAll());
-	}
-	
-	@GetMapping("/{id}")
-	public ResponseEntity<Item> getItemById(@PathVariable Long id) {
-            /**
-             * ResponseEntity.of
-             * A shortcut for creating a ResponseEntity with the given body and the OK status, 
-             * or an empty body and a NOT FOUND status in case of a Optional.empty() parameter.
-             */
-		return ResponseEntity.of(itemRepository.findById(id));
-	}
-	
+    @Autowired
+    private ItemRepository itemRepository;
+
+    @GetMapping
+    public ResponseEntity<List<Item>> getItems() {
+        return ResponseEntity.ok(itemRepository.findAll());
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<Item> getItemById(@PathVariable Long id) {
+        /**
+         * ResponseEntity.of A shortcut for creating a ResponseEntity with the
+         * given body and the OK status, or an empty body and a NOT FOUND status
+         * in case of a Optional.empty() parameter.
+         */
+        return ResponseEntity.of(itemRepository.findById(id));
+    }
+
     @GetMapping("/name/{name}")
     public ResponseEntity<List<Item>> getItemsByName(@PathVariable String name) {
-        
+
         List<Item> items = itemRepository.findByName(name);
 
         if (items == null || items.isEmpty()) {
-            log.error("item not found for item: {}",name); 
+            log.error("item not found for item: {}", name);
             return ResponseEntity.notFound().build();
         }
-       return ResponseEntity.ok(items);
+        return ResponseEntity.ok(items);
 
     }
-	
+
 }

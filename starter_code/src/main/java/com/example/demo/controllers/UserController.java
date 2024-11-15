@@ -100,9 +100,4 @@ public class UserController {
 
         return ResponseEntity.ok(user);
     }
-
-//    public UserController() {
-//        System.out.println("com.example.demo.controllers.UserController.<init>()");
-//    }
-
 }

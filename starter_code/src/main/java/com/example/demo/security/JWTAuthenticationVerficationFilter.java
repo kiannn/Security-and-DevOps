@@ -17,6 +17,7 @@ import org.springframework.stereotype.Component;
 import com.auth0.jwt.JWT;
 import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 import com.auth0.jwt.exceptions.AlgorithmMismatchException;
+import com.auth0.jwt.exceptions.InvalidClaimException;
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.SignatureVerificationException;
 import org.slf4j.Logger;
@@ -63,8 +64,13 @@ public class JWTAuthenticationVerficationFilter extends BasicAuthenticationFilte
                 user = JWT.require(HMAC512(SecurityConstants.SECRET.getBytes())).build()
                         .verify(token.replace(SecurityConstants.TOKEN_PREFIX, ""))
                         .getSubject();
-            } catch (SignatureVerificationException | AlgorithmMismatchException | JWTDecodeException s) {
+            } catch (SignatureVerificationException | 
+                     AlgorithmMismatchException | 
+                     JWTDecodeException |
+                     InvalidClaimException s) {
+                
                 log.error(s.getMessage());
+                return null;
             }
 
             if (user != null) {

@@ -13,13 +13,14 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @EnableWebSecurity
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private UserDetailsServiceImpl userDetailsService;
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-    private ApplicationContext ApplicationContext;
+    ApplicationContext ApplicationContext;
 
     public WebSecurityConfiguration(UserDetailsServiceImpl userDetailsService,
             BCryptPasswordEncoder bCryptPasswordEncoder, ApplicationContext ApplicationContext) {
