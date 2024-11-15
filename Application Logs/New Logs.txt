@@ -1,0 +1,62 @@
+2024-11-15 17:49:45.363  INFO 20780 --- [           main] com.example.demo.Application             : Starting Application on LAPTOP-CTMIQ9T4 with PID 20780 (C:\Users\kian1\OneDrive\Documents\NetBeansProjects\auth-course_Auth\target\classes started by kian1 in C:\Users\kian1\OneDrive\Documents\NetBeansProjects\auth-course_Auth)
+2024-11-15 17:49:45.364  INFO 20780 --- [           main] com.example.demo.Application             : No active profile set, falling back to default profiles: default
+2024-11-15 17:49:46.064  INFO 20780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data repositories in DEFAULT mode.
+2024-11-15 17:49:46.131  INFO 20780 --- [           main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 59ms. Found 4 repository interfaces.
+2024-11-15 17:49:46.679  INFO 20780 --- [           main] trationDelegate$BeanPostProcessorChecker : Bean 'org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration' of type [org.springframework.transaction.annotation.ProxyTransactionManagementConfiguration$$EnhancerBySpringCGLIB$$a284dede] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2024-11-15 17:49:47.018  INFO 20780 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2024-11-15 17:49:47.043  INFO 20780 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-11-15 17:49:47.044  INFO 20780 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.19]
+2024-11-15 17:49:47.149  INFO 20780 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-11-15 17:49:47.149  INFO 20780 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1714 ms
+2024-11-15 17:49:47.330  INFO 20780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-11-15 17:49:47.418  INFO 20780 --- [           main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-11-15 17:49:47.475  INFO 20780 --- [           main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [
+	name: default
+	...]
+2024-11-15 17:49:47.517  INFO 20780 --- [           main] org.hibernate.Version                    : HHH000412: Hibernate Core {5.3.10.Final}
+2024-11-15 17:49:47.519  INFO 20780 --- [           main] org.hibernate.cfg.Environment            : HHH000206: hibernate.properties not found
+2024-11-15 17:49:47.624  INFO 20780 --- [           main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.0.4.Final}
+2024-11-15 17:49:47.764  INFO 20780 --- [           main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-11-15 17:49:48.443  INFO 20780 --- [           main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-11-15 17:49:48.941  WARN 20780 --- [           main] aWebConfiguration$JpaWebMvcConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-11-15 17:49:49.004  INFO 20780 --- [           main] o.s.s.web.DefaultSecurityFilterChain     : Creating filter chain: any request, [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@15c1b543, org.springframework.security.web.context.SecurityContextPersistenceFilter@4a2653a0, org.springframework.security.web.header.HeaderWriterFilter@4e357792, org.springframework.web.filter.CorsFilter@23954300, org.springframework.security.web.authentication.logout.LogoutFilter@2d88c1bf, com.example.demo.security.JWTAuthenticationFilter@6aae82cc, com.example.demo.security.JWTAuthenticationVerficationFilter@7a587e84, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5ac646b3, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@3d9c8c3c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@622ba721, org.springframework.security.web.session.SessionManagementFilter@4e6280de, org.springframework.security.web.access.ExceptionTranslationFilter@1800c1e3, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1dd247b]
+2024-11-15 17:49:49.132  INFO 20780 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2024-11-15 17:49:49.338  INFO 20780 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2024-11-15 17:49:49.340  INFO 20780 --- [           main] com.example.demo.Application             : Started Application in 4.347 seconds (JVM running for 4.771)
+2024-11-15 17:50:47.603  INFO 20780 --- [nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-11-15 17:50:47.603  INFO 20780 --- [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-11-15 17:50:47.620  INFO 20780 --- [nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 17 ms
+2024-11-15 17:50:47.774 ERROR 20780 --- [nio-8080-exec-2] c.e.demo.controllers.UserController      : Username, password and confirmPassword all must be provided - Username=kian3 password=1234567 confirmPassword=null
+2024-11-15 17:50:54.745 ERROR 20780 --- [nio-8080-exec-3] c.e.demo.controllers.UserController      : Username, password and confirmPassword all must be provided - Username=kian3 password=null confirmPassword=1234567
+2024-11-15 17:51:00.949 ERROR 20780 --- [nio-8080-exec-5] c.e.demo.controllers.UserController      : Username, password and confirmPassword all must be provided - Username=null password=1234567 confirmPassword=1234567
+2024-11-15 17:51:08.335 ERROR 20780 --- [nio-8080-exec-8] c.e.demo.controllers.UserController      : Username, password and confirmPassword all must be provided - Username=kian3 password=1234567 confirmPassword=null
+2024-11-15 17:51:27.117  WARN 20780 --- [io-8080-exec-10] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unexpected character ('}' (code 125)): was expecting double-quote to start field name; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character ('}' (code 125)): was expecting double-quote to start field name
+ at [Source: (PushbackInputStream); line: 4, column: 2]]
+2024-11-15 17:51:32.590 ERROR 20780 --- [nio-8080-exec-2] c.e.demo.controllers.UserController      : Username, password and confirmPassword all must be provided - Username=kian3 password=null confirmPassword=null
+2024-11-15 17:51:33.773 ERROR 20780 --- [nio-8080-exec-3] c.e.demo.controllers.UserController      : Username, password and confirmPassword all must be provided - Username=kian3 password=null confirmPassword=null
+2024-11-15 17:52:02.518  WARN 20780 --- [nio-8080-exec-5] c.e.demo.controllers.UserController      : User create failed, either password length is less than 7 or mismatched confirm password - password:1234567  confirm password: 123456
+2024-11-15 17:52:13.567  INFO 20780 --- [nio-8080-exec-8] o.h.h.i.QueryTranslatorFactoryInitiator  : HHH000397: Using ASTQueryTranslatorFactory
+2024-11-15 17:52:13.934  INFO 20780 --- [nio-8080-exec-8] c.e.demo.controllers.UserController      : User created successfully username: kian3   id: 1
+2024-11-15 17:52:50.522  WARN 20780 --- [nio-8080-exec-9] c.e.d.security.JWTAuthenticationFilter   : Failed to read credentials
+2024-11-15 17:53:47.759  WARN 20780 --- [io-8080-exec-10] c.e.d.security.JWTAuthenticationFilter   : Failed to read credentials
+2024-11-15 17:54:02.832  WARN 20780 --- [nio-8080-exec-1] c.e.d.security.JWTAuthenticationFilter   : Mismatch credentials
+2024-11-15 17:54:17.224  WARN 20780 --- [nio-8080-exec-2] c.e.d.security.JWTAuthenticationFilter   : Failed to read credentials
+2024-11-15 17:54:30.316  WARN 20780 --- [nio-8080-exec-4] c.e.d.security.JWTAuthenticationFilter   : Mismatch credentials
+2024-11-15 17:55:43.510 ERROR 20780 --- [nio-8080-exec-8] e.d.s.JWTAuthenticationVerficationFilter : The string 'È ï¿½ï¿½ï¿½ï¿½ï¿ï¿ï¿½[ÈŽï¿½ï¿½ï¿½LLï¿½ï¿½' doesn't have a valid JSON format.
+2024-11-15 17:56:02.914 ERROR 20780 --- [nio-8080-exec-9] e.d.s.JWTAuthenticationVerficationFilter : The string '{"sub":"kian3","exp":1732575277,"iaHï¿½ï¿½Mï¿½ï¿½Mï¿½LLï¿½ï¿½ï¿½' doesn't have a valid JSON format.
+2024-11-15 17:56:26.936 ERROR 20780 --- [io-8080-exec-10] e.d.s.JWTAuthenticationVerficationFilter : The Token's Signature resulted invalid when verified using the Algorithm: HmacSHA512
+2024-11-15 17:56:46.334 ERROR 20780 --- [nio-8080-exec-1] e.d.s.JWTAuthenticationVerficationFilter : The string '{"sub":"kian3ï¿½^ï¿½ï¿½Mï¿½Ì Mï¿½Lï¿½ï¿½ï¿ï¿½Xï¿½ï¿½Mï¿½ï¿½Mï¿½LLï¿½ï¿½ï¿½' doesn't have a valid JSON format.
+2024-11-15 17:57:08.962 ERROR 20780 --- [nio-8080-exec-2] e.d.s.JWTAuthenticationVerficationFilter : The string '{"sub":"kian3ï¿½^ï¿½ï¿½Mï¿½Ì Mï¿½Lï¿½ï¿½ï¿ï¿½Xï¿½ï¿½Mï¿½ï¿½Mï¿½LLï¿½ï¿½ï¿½' doesn't have a valid JSON format.
+2024-11-15 17:57:28.217 ERROR 20780 --- [nio-8080-exec-4] e.d.s.JWTAuthenticationVerficationFilter : The Token's Signature resulted invalid when verified using the Algorithm: HmacSHA512
+2024-11-15 18:00:27.166 ERROR 20780 --- [io-8080-exec-10] e.d.s.JWTAuthenticationVerficationFilter : The Token's Signature resulted invalid when verified using the Algorithm: HmacSHA512
+2024-11-15 18:01:36.907  WARN 20780 --- [nio-8080-exec-4] c.e.demo.controllers.CartController      : User not found - User id : kian
+2024-11-15 18:03:12.916 ERROR 20780 --- [nio-8080-exec-8] e.d.s.JWTAuthenticationVerficationFilter : The string '{"sub:"kian3","exp":1732575277,"iat":1731711277}' doesn't have a valid JSON format.
+2024-11-15 18:03:21.038 ERROR 20780 --- [nio-8080-exec-9] e.d.s.JWTAuthenticationVerficationFilter : The string '{"sub:"kian3","exp":1732575277,"iat":1731711277}' doesn't have a valid JSON format.
+2024-11-15 18:03:30.360 ERROR 20780 --- [io-8080-exec-10] e.d.s.JWTAuthenticationVerficationFilter : The string '{"subï¿½ï¿½ï¿½X[ï¿½Èï¿½^ï¿½ï¿½Mï¿½Ì Mï¿½Lï¿½ï¿½ï¿ï¿½Xï¿½ï¿½Mï¿½ï¿½Mï¿½LLï¿½ï¿½ï¿½' doesn't have a valid JSON format.
+2024-11-15 18:04:10.600 ERROR 20780 --- [nio-8080-exec-2] c.e.demo.controllers.UserController      : Username must be unique - username kian3 already exists
+2024-11-15 18:05:32.070  WARN 20780 --- [nio-8080-exec-3] c.e.demo.controllers.OrderController     : Order submission failed - no user found with username : kian
+2024-11-15 18:05:40.554  INFO 20780 --- [nio-8080-exec-6] c.e.demo.controllers.OrderController     : Order submission successful for username : kian3
+2024-11-15 18:06:09.220 ERROR 20780 --- [nio-8080-exec-7] e.d.s.JWTAuthenticationVerficationFilter : The Token's Signature resulted invalid when verified using the Algorithm: HmacSHA512
+2024-11-15 18:06:30.345  INFO 20780 --- [nio-8080-exec-8] c.e.demo.controllers.OrderController     : Order submission successful for username : kian3
+2024-11-15 18:28:24.518 ERROR 20780 --- [nio-8080-exec-1] e.d.s.JWTAuthenticationVerficationFilter : The Token's Signature resulted invalid when verified using the Algorithm: HmacSHA512
+2024-11-15 18:28:53.660 ERROR 20780 --- [nio-8080-exec-2] e.d.s.JWTAuthenticationVerficationFilter : The string 'È ï¿½ï¿½ï¿½ï¿½ï¿ï¿ï¿½[ÈŽï¿½ï¿½ï¿½LLï¿½ï¿½' doesn't have a valid JSON format.
